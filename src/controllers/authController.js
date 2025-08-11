@@ -9,6 +9,7 @@ import { normalizePhone } from "../utils/phoneFormatter.js";
 export const sendOtp = async (req, res) => {
   const { phone } = req.body;
   const e164 = normalizePhone(phone); // Convert to +92300 format
+  console.log("Normalized phone number (e164):", e164);
   if (!e164) return res.status(400).json({ error: "Invalid phone number" });
 
   const otp = generateOtp(); // Generate random OTP
@@ -24,7 +25,7 @@ export const sendOtp = async (req, res) => {
     // Send OTP via Textbelt
     const resp = await axios.post("https://textbelt.com/text", {
       phone: e164,
-      message: `Zoomigo verification code: ${otp}. Expires in 5 minutes.`,
+      message: `Zoomigo verification code: ${otp}. Expires in 50 minutes.`,
       key: process.env.TEXTBELT_API_KEY // ✅ using .env variable
     });
 

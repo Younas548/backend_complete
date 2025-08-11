@@ -10,3 +10,4 @@ const otpSchema = new mongoose.Schema({
 otpSchema.index({ createdAt: 1 }, { expireAfterSeconds: 300 }); // 5 min
 
 export default mongoose.model("OTP", otpSchema);
+

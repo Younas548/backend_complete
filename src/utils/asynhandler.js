@@ -1,10 +1,13 @@
-const asynHandler = ()=>{
-    return(req,res,next) => {
-        Promise.resolve(requestHandler(req,res,next))
-    }
-}
+// async handler utility (sirf ek jagah define karo)
+const asynHandler = (requestHandler) => {
+    return (req, res, next) => {
+        Promise.resolve(requestHandler(req, res, next))
+            .catch(next);
+    };
+};
 
-export {asynHandler}
+export { asynHandler };
+
 
 
 // const asynHandler = () => async (req,res,next) => {

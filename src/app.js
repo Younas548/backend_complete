@@ -15,11 +15,12 @@ app.use(cookieParser())
 
 //import routes
 
-import userRouter from "./routes/user.route.js";
+//import userRouter from "./routes/user.route.js";
 
 ///routes declaration
-app.use("/users", userRouter)
-
+//app.use("/users", userRouter)
+import authRoutes from './routes/authRoutes.js';
+app.use('/api/auth', authRoutes);
 
 export {app}
 
